@@ -51,7 +51,7 @@ RUN apt-get update -qq \
 EXPOSE 80 443
 
 VOLUME ["/etc/nginx/sites-enabled","/etc/nginx/ssl/alpha","/home/alpha","/var/cache/nginx","/var/ngx_pagespeed_cache","/var/log/nginx"]
-MKDIR ["/var/lib/nginx/body","/var/lib/nginx/fastcgi","/var/lib/nginx/proxy","/var/lib/nginx/scgi","/var/lib/nginx/uwsgi"]
+MKDIR ["/var/lib/nginx","/var/lib/nginx/body","/var/lib/nginx/fastcgi","/var/lib/nginx/proxy","/var/lib/nginx/scgi","/var/lib/nginx/uwsgi"]
 WORKDIR /etc/nginx/
 ENTRYPOINT ["/usr/sbin/nginx"]
 

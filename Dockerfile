@@ -1,6 +1,9 @@
 FROM google/debian:wheezy
 MAINTAINER E.T.Cook <e@etc.io>
 
+RUN groupadd -r alpha \
+  && useradd -r -g alpha -G sudo alpha
+
 # more functional nginx build that mimics standard ubuntu build + pagespeed
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -47,8 +50,8 @@ RUN apt-get update -qq \
 
 EXPOSE 80 443
 
-VOLUME ["/etc/nginx/sites-enabled","/var/ngx_pagespeed_cache","/var/log/nginx","/var/lib/nginx"]
 MKDIR ["/var/lib/nginx/body","/var/lib/nginx/fastcgi","/var/lib/nginx/proxy","/var/lib/nginx/scgi","/var/lib/nginx/uwsgi"]
+VOLUME ["/etc/nginx/sites-enabled","/etc/nginx/ssl/alpha","/home/alpha","/var/cache/nginx","/var/ngx_pagespeed_cache","/var/log/nginx"]
 WORKDIR /etc/nginx/
 ENTRYPOINT ["/usr/sbin/nginx"]
 

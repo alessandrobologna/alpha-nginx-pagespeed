@@ -8,7 +8,7 @@ RUN groupadd -r alpha \
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# nginx - 1.7.10
+# nginx - 1.7.11
 # pagespeed - 1.9.32.3
 # nginx-dav-ext-module - 0.0.3
 # echo-nginx-modeul - 0.57
@@ -20,7 +20,7 @@ RUN apt-get update -qq \
     && apt-get install -yqq build-essential zlib1g-dev libpcre3 libpcre3-dev openssl libssl-dev libgd2-xpm libgd2-xpm-dev libxslt-dev libgeoip-dev libpam0g-dev libperl-dev wget ca-certificates \
     && (wget -qO - https://github.com/pagespeed/ngx_pagespeed/archive/v1.9.32.3-beta.tar.gz | tar zxf - -C /tmp) \
     && (wget -qO - https://dl.google.com/dl/page-speed/psol/1.9.32.3.tar.gz | tar zxf - -C /tmp/ngx_pagespeed-1.9.32.3-beta/) \
-    && (wget -qO - http://nginx.org/download/nginx-1.7.10.tar.gz | tar zxf - -C /tmp) \
+    && (wget -qO - http://nginx.org/download/nginx-1.7.11.tar.gz | tar zxf - -C /tmp) \
     && (wget -qO - https://github.com/arut/nginx-dav-ext-module/archive/v0.0.3.tar.gz | tar zxf - -C /tmp) \
     && (wget -qO - https://github.com/openresty/echo-nginx-module/archive/v0.57.tar.gz | tar zxf - -C /tmp) \
     && (wget -qO - https://github.com/stogh/ngx_http_auth_pam_module/archive/v1.4.tar.gz | tar zxf - -C /tmp) \

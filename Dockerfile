@@ -26,7 +26,7 @@ RUN apt-get update -qq \
     && (wget -qO - https://github.com/stogh/ngx_http_auth_pam_module/archive/v1.4.tar.gz | tar zxf - -C /tmp) \
     && (wget -qO - https://github.com/gnosek/nginx-upstream-fair/archive/master.tar.gz | tar zxf - -C /tmp) \
     && (wget -qO - https://github.com/yaoweibin/ngx_http_substitutions_filter_module/archive/v0.6.4.tar.gz | tar zxf - -C /tmp) \
-    && cd /tmp/nginx-1.7.11 \
+    && cd /tmp/nginx-1.7.12 \
     && ./configure --with-cc-opt='-g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2' \
     --with-ld-opt='-Wl,-Bsymbolic-functions -Wl,-z,relro' --sbin-path=/usr/sbin/nginx --prefix=/usr/share/nginx --conf-path=/etc/nginx/nginx.conf \
     --http-log-path=/var/log/nginx/access.log --error-log-path=/var/log/nginx/error.log --lock-path=/var/lock/nginx.lock \

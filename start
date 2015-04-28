@@ -2,7 +2,6 @@
 
 # replace env variables in template
 echo "$(eval "echo \"$(sed 's/\"/\\\"/g' /etc/nginx/sites-enabled/template)\"")" >  /etc/nginx/sites-enabled/default.conf
-/bin/rm 
 # create cache dir
 /bin/mkdir -p /var/ngx_pagespeed_cache
 /bin/chmod a+wrx /var/ngx_pagespeed_cache

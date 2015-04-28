@@ -53,9 +53,11 @@ RUN mkdir -p /var/lib/nginx/{body,fastcgi,proxy,scgi,uwsgi}
 
 EXPOSE 80 443
 
+COPY start /start
+RUN chmod +x /start
 VOLUME ["/etc/nginx/sites-enabled","/etc/nginx/ssl/alpha","/home/alpha","/var/cache/nginx","/var/ngx_pagespeed_cache","/var/log/nginx"]
 WORKDIR /etc/nginx/
-ENTRYPOINT ["/usr/sbin/nginx"]
+ENTRYPOINT ["/start"]
 
 # Configure nginx
 COPY nginx.conf /etc/nginx/nginx.conf

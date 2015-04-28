@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# replace env variables in template
+eval echo "$(eval "echo \"$(cat  /etc/nginx/sites-enabled/template)\"")" >  /etc/nginx/sites-enabled/default
+
+# create cache dir
+/bin/mkdir -p /tmp/ngx_pagespeed_cache
+/bin/chmod a+wrx /tmp/ngx_pagespeed_cache
+
+# start nginx
+/usr/sbin/nginx $@

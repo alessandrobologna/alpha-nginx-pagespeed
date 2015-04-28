@@ -58,6 +58,5 @@ WORKDIR /etc/nginx/
 ENTRYPOINT ["/usr/sbin/nginx"]
 
 # Configure nginx
-RUN chmod 777 /var/ngx_pagespeed_cache
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY sites-enabled /etc/nginx/sites-enabled

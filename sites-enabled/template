@@ -5,7 +5,7 @@ server {
     pagespeed RespectVary on;
     pagespeed DisableRewriteOnNoTransform off;
 
-    pagespeed FileCachePath              "/tmp/ngx_pagespeed_cache";
+    pagespeed FileCachePath              "/var/ngx_pagespeed_cache";
     pagespeed FileCacheSizeKb            102400;
     pagespeed FileCacheCleanIntervalMs   3600000;
     pagespeed FileCacheInodeLimit        500000;

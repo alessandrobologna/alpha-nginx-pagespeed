@@ -1,5 +1,7 @@
 server {
     listen 80;
+    
+    server_name ${FRONTEND:-localhost} 
 
     pagespeed on;
     pagespeed RespectVary on;
@@ -22,7 +24,11 @@ server {
         proxy_http_version 1.1;
         
         pagespeed EnableFilters recompress_images;
+        pagespeed EnableFilters prioritize_critical_css;
+        pagespeed EnableFilters inline_preview_images;
         pagespeed Domain ${BACKEND};
+        pagespeed Domain ${BACKENDS}
         pagespeed MapRewriteDomain ${FRONTEND} ${BACKEND};
+        pagespeed MapRewriteDomain ${FRONTEND} ${BACKENDS};
     }
 }

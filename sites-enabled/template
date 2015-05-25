@@ -26,6 +26,7 @@ server {
         pagespeed EnableFilters recompress_images;
         pagespeed EnableFilters prioritize_critical_css;
         pagespeed EnableFilters inline_preview_images;
+        pagespeed EnableFilters defer_javascript;
         pagespeed Domain ${BACKEND};
         pagespeed Domain ${BACKENDS};
         pagespeed MapRewriteDomain ${FRONTEND} ${BACKEND};

@@ -11,6 +11,9 @@ server {
     pagespeed FileCacheSizeKb            102400;
     pagespeed FileCacheCleanIntervalMs   3600000;
     pagespeed FileCacheInodeLimit        500000;
+    pagespeed UrlValuedAttribute img data-src image;
+    pagespeed UrlValuedAttribute a data-src image;
+    pagespeed EnableFilters extend_cache;
 
     location / {
 		#  Ensure requests for pagespeed optimized resources go to the pagespeed
@@ -19,10 +22,16 @@ server {
 		location ~ "^/pagespeed_static/" { }
 		location ~ "^/ngx_pagespeed_beacon$" { }
 
-        proxy_pass ${BACKEND:-http://127.0.0.1:8080};
+        proxy_pass http://${BACKEND:-127.0.0.1:8080};
+        proxy_set_header Host ${BACKEND:localhost};
         proxy_read_timeout 600s;
         proxy_http_version 1.1;
-        
+        proxy_hide_header Vary;
+        proxy_hide_header Expires;
+        proxy_hide_header Cache-Control;
+        proxy_hide_header Last-Modified;
+        proxy_hide_header Pragma;
+
         pagespeed EnableFilters recompress_images;
         pagespeed EnableFilters prioritize_critical_css;
         pagespeed EnableFilters inline_preview_images;
